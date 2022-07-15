@@ -4,6 +4,7 @@ const playerBtnList = document.querySelector('.playerBtnList')
 const btnFinish = document.querySelector('.btn-finish')
 const btnBack = document.querySelector('.btn-back')
 const btnRestart = document.querySelector('.btn-restart')
+const text = document.querySelector('.text')
 
 
 const audio = document.getElementById("bgMusic");
@@ -353,6 +354,11 @@ btnFinish.addEventListener('click', e => {
   // console.log(currentLine.length)
 
   if (currentLine.length !== 8) {
+    text.innerText='還沒連完(´･_･`)!!!'
+    text.className='text show'
+    setTimeout(()=>{
+      text.className='text'
+    },1200)
     return // console.log('你還沒連完!')
   }
 
@@ -375,6 +381,11 @@ btnBack.addEventListener('click', e => {
   const currentLine = document.querySelectorAll('.stroke');
 
   if (!currentLine.length) {
+    text.innerText='無法返回了，請向前邁進!!!'
+    text.className='text show'
+    setTimeout(()=>{
+      text.className='text'
+    },1200)
     return // console.log('無法返回了啦!')
   }
 
