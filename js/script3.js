@@ -6,12 +6,19 @@ const btnBack = document.querySelector('.btn-back')
 const btnRestart = document.querySelector('.btn-restart')
 
 
+const audio = document.getElementById("bgMusic");
+
 // 先建立球員陣列
+// const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
+//   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
+//   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
+//   'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Quinndary_Weatherspoon',
+//   'Stephen_Curry']
 const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
-  'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Quinndary_Weatherspoon',
-  'Stephen_Curry',]
+  'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Stephen_Curry']
+
 
 
 // 創造球員Dom函式
@@ -90,6 +97,8 @@ function getPlayer () {
       //建立 playerTemp 的對應按鈕
       btnRandom(playerTemp)
 
+      return console.log('playerTemp',playerTemp)
+
     }
 
     // 隨機抽數字
@@ -102,6 +111,7 @@ function getPlayer () {
     }
     // 將 player[num]的人推進 playerTemp
     playerTemp.push(player[num])
+
 
   }, 0)
 
@@ -125,6 +135,7 @@ function btnRandom (playerTemp) {
         const playerBtn = new PlayButton(item, pointWidth, pointHeight)
         playerBtn.btnCreate()
       })
+      return console.log('playerBtnTemp',playerBtnTemp)
     }
 
     const num = getRandomInt(playerTemp.length)
@@ -184,13 +195,14 @@ document.addEventListener('click', e => {
   if (e.target.classList.contains('disabled')) {
 
     // 已連過的不能再連
-    return console.log('你已經連過線了')
+    audio.play();
+    return // console.log('你已經連過線了')
 
   } else if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'BUTTON') {
 
     if (!e.target.classList.contains('pic')) {
       // 不是圖片跟按鈕 也不能連
-      return console.log(e.target.nodeName, '請點圖片或者是按鈕')
+      return // console.log(e.target.nodeName, '請點圖片或者是按鈕')
     }
 
   }
@@ -200,8 +212,8 @@ document.addEventListener('click', e => {
 
   // 點到A球員 >　抓取A球員Point的位置
   const playerPoint = document.querySelector(`.point.point_${e.target.nodeName}.${e.target.dataset.player}`)
-  console.log(playerPoint)
-  console.log(e)
+  // console.log(playerPoint)
+  // console.log(e)
 
   let obj = {
     cx: playerPoint.offsetLeft + pointWidth / 2,
@@ -210,11 +222,11 @@ document.addEventListener('click', e => {
     name: e.target.dataset.player
   }
   arr.push(obj)
-  console.log(obj.cx, obj.cy)
-  console.log(obj)
+  // console.log(obj.cx, obj.cy)
+  // console.log(obj)
+  e.target.classList.add('click')
 
-
-  console.log(arr)
+  // console.log(arr)
   if (click == 2) {
     /*
       以下情況不能產生連線
@@ -225,8 +237,8 @@ document.addEventListener('click', e => {
     */
     // 優化改成 兩個項目要不一樣才可以進行
     if (arr[0].nodeName !== arr[1].nodeName) {
-      console.log(arr)
-      console.log(click)
+      // console.log(arr)
+      // console.log(click)
 
       const line = new Svg(
         arr[0].cx,
@@ -245,11 +257,15 @@ document.addEventListener('click', e => {
         // document.querySelector(`.img-fluid.img-${arr[0].name}`).classList.add('disabled')
         document.querySelector(`.pic.${arr[0].name}`).classList.add('disabled')
         document.querySelector(`.btn-${arr[1].name}`).classList.add('disabled')
+        document.querySelector(`.pic.${arr[0].name}`).classList.remove('click')
+        document.querySelector(`.btn-${arr[1].name}`).classList.remove('click')
 
       } else {
 
         document.querySelector(`.btn-${arr[0].name}`).classList.add('disabled')
         document.querySelector(`.pic.${arr[1].name}`).classList.add('disabled')
+        document.querySelector(`.btn-${arr[0].name}`).classList.remove('click')
+        document.querySelector(`.pic.${arr[1].name}`).classList.remove('click')
         // document.querySelector(`.img-fluid.img-${arr[1].name}`).classList.add('disabled')
 
       }
@@ -259,16 +275,18 @@ document.addEventListener('click', e => {
 
     } else {
 
-      console.log(`連續按到兩個了${arr[1].nodeName}`)
-      console.log(`連續按到兩個了${arr[0].nodeName}`)
+      // console.log(`連續按到兩個了${arr[1].nodeName}`)
+      // console.log(`連續按到兩個了${arr[0].nodeName}`)
 
       // 將第二個按到的刪除
       // click也要改回成 1
       // 一個返回上一步的概念
+      e.target.classList.remove('click')
+      audio.play();
       arr.pop()
       click = 1
-      // console.log(arr)
-      // console.log(click)
+      // // console.log(arr)
+      // // console.log(click)
       return
 
     }
@@ -313,11 +331,11 @@ Svg.prototype.createLine = function () {
 
   // 判斷有沒有連線成功
   if (this.playerA.name === this.playerB.name) {
-    console.log('連對了!')
+    // console.log('連對了!')
     svg.setAttributeNS(null, 'class', 'stroke Success');
 
   } else {
-    console.log('連錯了QQ')
+    // console.log('連錯了QQ')
     svg.setAttributeNS(null, 'class', 'stroke NG');
   }
 
@@ -328,14 +346,14 @@ Svg.prototype.createLine = function () {
 // 完成送出
 
 btnFinish.addEventListener('click', e => {
-  console.log('123')
+  // console.log('123')
   // 抓取目前有幾條線
   const currentLine = document.querySelectorAll('.stroke');
-  console.log(currentLine)
-  console.log(currentLine.length)
+  // console.log(currentLine)
+  // console.log(currentLine.length)
 
   if (currentLine.length !== 8) {
-    return console.log('你還沒連完!')
+    return // console.log('你還沒連完!')
   }
 
   currentLine.forEach((item, index) => {
@@ -357,7 +375,7 @@ btnBack.addEventListener('click', e => {
   const currentLine = document.querySelectorAll('.stroke');
 
   if (!currentLine.length) {
-    return console.log('無法返回了啦!')
+    return // console.log('無法返回了啦!')
   }
 
   // 先前有特別在line上設置分別連線的圖片跟按鈕是誰
