@@ -7,7 +7,7 @@ const btnRestart = document.querySelector('.btn-restart')
 
 
 // 先建立球員陣列
-var player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
+const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
   'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Quinndary_Weatherspoon',
@@ -56,50 +56,54 @@ function getRandomInt (max) {
   return Math.floor(Math.random() * max);
 }
 
+
 let playerTemp = []
-
-// 先隨機取出八位球星
-player.forEach((item, index) => {
-  // const player = new PlayCircle(item)
-  // player.imgCreate()
-  // console.log(player.length) //16
-
-  // 球員人數總共16人 所以 player.length = 16
-  // 放進 getRandomInt() 會得出 0-15 的隨機數
-  // 剛好吻合 陣列索引值
-  // console.log(getRandomInt(player.length)); // 0-15
-
-  // 隨機取出8位球員
-  // 一旦超過就跳出
-  if (playerTemp.length == 8) {
-    return
-  }
-
-  const num = getRandomInt(player.length)
-
-  // 當 新陣列內已有 該球員的時候 跳掉
-  if (playerTemp.includes(player[num])) {
-    return
-  }
-
-  playerTemp.push(player[num])
-
-})
-
-
 let pointWidth = '20'
 let pointHeight = '20'
-// 製作八位球星的Dom
-playerTemp.forEach((item, index) => {
-  const player = new PlayerCircle(item, pointWidth, pointHeight)
-  player.imgCreate()
-})
+
+// 抓取隨機8人
+function getPlayer () {
+
+  const arr = setInterval(() => {
+
+    if (playerTemp.length == 8) {
+      
+      // 當滿8位時 關掉這個循環
+      clearInterval(arr)
+
+      // 製作八位球星的Dom
+      playerTemp.forEach((item) => {
+        const player = new PlayerCircle(item, pointWidth, pointHeight)
+        player.imgCreate()
+      })
+
+      //建立 playerTemp 的對應按鈕
+      btnRandom(playerTemp)
+
+    }
+
+    // 隨機抽數字
+    const num = getRandomInt(player.length)
+    // if(playerTemp[num].includes())
+
+    // 過濾重複的人
+    if (playerTemp.includes(player[num])) {
+      return
+    }
+    // 將 player[num]的人推進 playerTemp
+    playerTemp.push(player[num])
+
+  }, 0)
+
+}
+
+getPlayer()
 
 // =====================================
 
 let playerBtnTemp = []
 
-function btnRandom () {
+function btnRandom (playerTemp) {
 
   const arr = setInterval(() => {
     // 當 playerBtnTemp == 8 代表已重新排列完
@@ -124,7 +128,6 @@ function btnRandom () {
 
 }
 
-btnRandom()
 
 // 創造球員Btn函式
 function PlayButton (name, pointWidth, pointHeight) {
@@ -316,19 +319,19 @@ btnFinish.addEventListener('click', e => {
   console.log(currentLine)
   console.log(currentLine.length)
 
-  if(currentLine.length !== 8){
+  if (currentLine.length !== 8) {
     return console.log('你還沒連完!')
   }
 
-  currentLine.forEach((item,index)=>{
-    if(item.classList.contains('NG')){
+  currentLine.forEach((item, index) => {
+    if (item.classList.contains('NG')) {
       item.classList.add('red')
-    }else{
+    } else {
       item.classList.add('green')
     }
   })
 
-},false)
+}, false)
 
 
 // =====================================
@@ -338,22 +341,35 @@ btnBack.addEventListener('click', e => {
   // 抓取目前有幾條線
   const currentLine = document.querySelectorAll('.stroke');
 
-  if(!currentLine.length){
+  if (!currentLine.length) {
     return console.log('無法返回了啦!')
   }
 
   // 先前有特別在line上設置分別連線的圖片跟按鈕是誰
-  const img = currentLine[currentLine.length-1].dataset.IMG
-  const btn = currentLine[currentLine.length-1].dataset.BUTTON
+  const img = currentLine[currentLine.length - 1].dataset.IMG
+  const btn = currentLine[currentLine.length - 1].dataset.BUTTON
 
-  currentLine[currentLine.length-1].remove()
+  currentLine[currentLine.length - 1].remove()
   document.querySelector(`.img-fluid.img-${img}`).classList.remove('disabled')
   document.querySelector(`.btn-${btn}`).classList.remove('disabled')
 
-},false)
+}, false)
 
 
 // =====================================
 // 重新開始
+btnRestart.addEventListener('click', e => {
 
+  playerList.innerHTML = ''
+  playerBtnList.innerHTML = ''
+  // 刪除全部SVG
+  const currentLine = document.querySelectorAll('.stroke');
+  currentLine.forEach(item => {
+    item.remove()
+  })
+
+  playerTemp = []
+  playerBtnTemp = []
+  getPlayer()
+})
 
