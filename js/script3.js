@@ -28,20 +28,30 @@ PlayerCircle.prototype.imgCreate = function () {
   player.className = `player ${this.name}`
   player.dataset.player = this.name
 
+  const pic = document.createElement('div')
+  pic.style = `
+              background-image: url(images/${this.name}.png),linear-gradient(#fff, #fff);
+              background-repeat: no-repeat;
+              background-position: top center;
+              background-size: cover;`
+  pic.className = `pic ${this.name}`
+  pic.dataset.player = this.name
+
   // 建立player圖片
-  const img = document.createElement('img')
-  img.src = `images/${this.name}.png`
-  img.className = `img-fluid img-${this.name}`
-  img.dataset.player = this.name
+  // const img = document.createElement('img')
+  // img.src = `images/${this.name}.png`
+  // img.className = `img-fluid img-${this.name}`
+  // img.dataset.player = this.name
 
   // 建立point
   const point = document.createElement('span')
-  point.className = `point point_IMG ${this.name}`
+  point.className = `point point_DIV ${this.name}`
   point.dataset.player = this.name
   point.style.width = this.pointWidth + 'px'
   point.style.height = this.pointHeight + 'px'
 
-  player.appendChild(img)
+  // pic.appendChild(img)
+  player.appendChild(pic)
   player.appendChild(point)
   playerList.appendChild(player)
 }
@@ -67,7 +77,7 @@ function getPlayer () {
   const arr = setInterval(() => {
 
     if (playerTemp.length == 8) {
-      
+
       // 當滿8位時 關掉這個循環
       clearInterval(arr)
 
@@ -178,8 +188,10 @@ document.addEventListener('click', e => {
 
   } else if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'BUTTON') {
 
-    // 不是圖片跟按鈕 也不能連
-    return console.log(e.target.nodeName, '請點圖片或者是按鈕')
+    if (!e.target.classList.contains('pic')) {
+      // 不是圖片跟按鈕 也不能連
+      return console.log(e.target.nodeName, '請點圖片或者是按鈕')
+    }
 
   }
 
@@ -227,15 +239,18 @@ document.addEventListener('click', e => {
       line.createLine()
 
       // 將已點到的做標記
-      if (arr[0].nodeName === 'IMG') {
+      // if (arr[0].nodeName === 'IMG') {
+      if (arr[0].nodeName === 'DIV') {
 
-        document.querySelector(`.img-fluid.img-${arr[0].name}`).classList.add('disabled')
+        // document.querySelector(`.img-fluid.img-${arr[0].name}`).classList.add('disabled')
+        document.querySelector(`.pic.${arr[0].name}`).classList.add('disabled')
         document.querySelector(`.btn-${arr[1].name}`).classList.add('disabled')
 
       } else {
 
         document.querySelector(`.btn-${arr[0].name}`).classList.add('disabled')
-        document.querySelector(`.img-fluid.img-${arr[1].name}`).classList.add('disabled')
+        document.querySelector(`.pic.${arr[1].name}`).classList.add('disabled')
+        // document.querySelector(`.img-fluid.img-${arr[1].name}`).classList.add('disabled')
 
       }
 
@@ -346,11 +361,13 @@ btnBack.addEventListener('click', e => {
   }
 
   // 先前有特別在line上設置分別連線的圖片跟按鈕是誰
-  const img = currentLine[currentLine.length - 1].dataset.IMG
+  // const img = currentLine[currentLine.length - 1].dataset.IMG
+  const div = currentLine[currentLine.length - 1].dataset.DIV
   const btn = currentLine[currentLine.length - 1].dataset.BUTTON
 
   currentLine[currentLine.length - 1].remove()
-  document.querySelector(`.img-fluid.img-${img}`).classList.remove('disabled')
+  // document.querySelector(`.img-fluid.img-${img}`).classList.remove('disabled')
+  document.querySelector(`.pic.${div}`).classList.remove('disabled')
   document.querySelector(`.btn-${btn}`).classList.remove('disabled')
 
 }, false)

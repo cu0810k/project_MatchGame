@@ -20,114 +20,58 @@ img, svg {
   vertical-align: middle;
 }
 
-* {
-  /* outline: 1px solid blue; */
-}
-
-.box {
-  position: absolute;
-  z-index: 1;
-  background: #000;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-}
-
-
-.box1 {
-  left: 200px;
-  top: 200px;
-  background-color: #000;
-  outline: 5px solid red;
-}
-
-.box2 {
-  left: 400px;
-  top: 200px;
-  background-color: green;
-  outline: 5px solid green;
-}
-
-.box3 {
-  left: 600px;
-  top: 200px;
-  background-color: orange;
-  outline: 5px solid orange;
-}
-
-.box4 {
-  left: 800px;
-  top: 200px;
-  background-color: purple;
-  outline: 5px solid purple;
-}
-
-.box5 {
-  left: 200px;
-  top: 600px;
-  background-color: #000;
-  outline: 5px solid rgb(116, 26, 235);
-}
-
-.box6 {
-  left: 400px;
-  top: 600px;
-  background-color: green;
-  outline: 5px solid rgb(230, 255, 89);
-}
-
-.box7 {
-  left: 600px;
-  top: 600px;
-  background-color: orange;
-  outline: 5px solid rgb(255, 0, 76);
-}
-
-.box8 {
-  left: 800px;
-  top: 600px;
-  background-color: purple;
-  outline: 5px solid rgb(119, 107, 119);
-}
-
-
-
-
-.play {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  /* opacity: .5; */
-}
-
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  outline: 1px solid #fff;
-  width: 1200px;
+  align-items: center;
+  width: 1400px;
   height: 800px;
+  border-radius: 120px;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #ffedad 40%, #f2ca46 100%);
+  box-shadow: 0 0 0 10px #f4d64a,
+  6px 10px 0 10px #d38d00,
+  -6px 10px 0 10px #d38d00,
+  inset 0px 0px 0px 8px #d58901;
+  margin: 0 30px;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  position: absolute;
+  border-radius: 120px;
+  background: #ffe681;
+  opacity: .5;
+  border-radius: 112px 80% 112px 113px;
+  top: 7px;
 }
 
 .playerList, .playerBtnList {
   display: flex;
   flex-wrap: wrap;
-  /* background: #ccc; */
   justify-content: space-around;
-  /* position: relative; */
   z-index: 3;
+  width: 1200px;
+  /* position: relative; */
 }
 
 
 .player {
-  /* width: 10px;
-  height: 10px; */
-  /* background: pink; */
   outline: 1px solid #000;
   width: 12.5%;
+}
+
+.player .pic{
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .player .point {
@@ -140,8 +84,12 @@ img, svg {
 
 .player img {
   cursor: pointer;
+  /* max-width: 170px;
+  margin-top: 28px;
+  margin-left: -10px; */
 }
 
+.player .pic.disabled,
 .player img.disabled,
 .btn button.disabled {
   cursor: default;
@@ -178,8 +126,6 @@ svg {
 }
 
 .stroke {
-  /* stroke-dashoffset: 2000;
-  stroke-dasharray: 2000; */
   stroke-dasharray: 100%;
   stroke-dashoffset: 100%;
   width: 100%;
