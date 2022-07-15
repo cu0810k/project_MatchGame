@@ -1,0 +1,229 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: #2365c5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+* {
+  /* outline: 1px solid blue; */
+}
+
+.box {
+  position: absolute;
+  z-index: 1;
+  background: #000;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+
+.box1 {
+  left: 200px;
+  top: 200px;
+  background-color: #000;
+  outline: 5px solid red;
+}
+
+.box2 {
+  left: 400px;
+  top: 200px;
+  background-color: green;
+  outline: 5px solid green;
+}
+
+.box3 {
+  left: 600px;
+  top: 200px;
+  background-color: orange;
+  outline: 5px solid orange;
+}
+
+.box4 {
+  left: 800px;
+  top: 200px;
+  background-color: purple;
+  outline: 5px solid purple;
+}
+
+.box5 {
+  left: 200px;
+  top: 600px;
+  background-color: #000;
+  outline: 5px solid rgb(116, 26, 235);
+}
+
+.box6 {
+  left: 400px;
+  top: 600px;
+  background-color: green;
+  outline: 5px solid rgb(230, 255, 89);
+}
+
+.box7 {
+  left: 600px;
+  top: 600px;
+  background-color: orange;
+  outline: 5px solid rgb(255, 0, 76);
+}
+
+.box8 {
+  left: 800px;
+  top: 600px;
+  background-color: purple;
+  outline: 5px solid rgb(119, 107, 119);
+}
+
+
+
+
+.play {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* opacity: .5; */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  outline: 1px solid #fff;
+  width: 1200px;
+  height: 800px;
+}
+
+.playerList, .playerBtnList {
+  display: flex;
+  flex-wrap: wrap;
+  /* background: #ccc; */
+  justify-content: space-around;
+  /* position: relative; */
+  z-index: 3;
+}
+
+
+.player {
+  /* width: 10px;
+  height: 10px; */
+  /* background: pink; */
+  outline: 1px solid #000;
+  width: 12.5%;
+}
+
+.player .point {
+  background: paleturquoise;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 50%;
+  display: block;
+}
+
+.player img {
+  cursor: pointer;
+}
+
+.player img.disabled,
+.btn button.disabled {
+  cursor: default;
+}
+
+.btn {
+  width: 12.5%;
+  outline: 1px solid #000;
+}
+
+.btn .point {
+  margin: auto;
+  margin-bottom: 30px;
+  background: #ff0000;
+  border-radius: 50%;
+  display: block;
+}
+
+.btn button {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  background: #ccc;
+}
+
+
+svg {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.stroke {
+  /* stroke-dashoffset: 2000;
+  stroke-dasharray: 2000; */
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  width: 100%;
+  height: 100%;
+  stroke: yellow;
+  animation: circle-draw0 .5s linear 1;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes circle-draw0 {
+  0% {
+    stroke-dashoffset: 100%;
+  }
+
+  100% {
+    stroke-dashoffset: 0%;
+  }
+}
+
+.stroke.green {
+  stroke: green;
+}
+
+
+.stroke.red {
+  stroke: red;
+}
+
+.btn-finish,
+.btn-back,
+.btn-restart {
+  position: absolute;
+  right: 10%;
+  z-index: 10;
+  width: 100px;
+  height: 50px;
+  background: #fff;
+}
+
+.btn-back {
+  top: 60%;
+}
+
+.btn-restart {
+  top: 80%;
+}
