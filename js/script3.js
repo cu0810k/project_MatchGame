@@ -91,8 +91,8 @@ function getRandomInt (max) {
 
 
 let playerTemp = []
-let pointWidth = '20'
-let pointHeight = '20'
+let pointWidth = '15'
+let pointHeight = '15'
 
 // 抓取隨機8人
 function getPlayer (status = 'easy') {
@@ -338,7 +338,7 @@ Svg.prototype.createLine = function () {
   shape.setAttributeNS(null, 'y1', this.y1);
   shape.setAttributeNS(null, 'x2', this.x2);
   shape.setAttributeNS(null, 'y2', this.y2);
-  shape.setAttributeNS(null, 'stroke-width', '10');
+  shape.setAttributeNS(null, 'stroke-width', '8');
   shape.setAttributeNS(null, 'stroke-linecap', 'round');
 
   svg.appendChild(shape)
@@ -396,7 +396,8 @@ btnBack.addEventListener('click', e => {
   const currentLine = document.querySelectorAll('.stroke');
 
   if (!currentLine.length) {
-    text.innerText = '無法返回了，請向前邁進!!!'
+    text.innerText = '還沒連完(´･_･`)!!!'
+    text.innerText = '沒了，請向前邁進!!!'
     text.className = 'text show'
     setTimeout(() => {
       text.className = 'text'

@@ -1,3 +1,7 @@
 [0716/022936.495:INFO:CONSOLE(1)] "Long rAF frame-time", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%202021%20(Prerelease)/Required/www-rich-tooltips/build/external.js (1)
 [0716/062441.469:ERROR:media_internals.cc(112)] Cannot get RenderProcessHost
 [0716/063033.326:INFO:CONSOLE(1)] "Hiding message due to error: Could not find the screen of the target", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%202021%20(Prerelease)/Required/www-butler/build/spaces.js (1)
+[0716/152846.481:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0716/152851.531:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0716/152856.544:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0716/152901.561:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
