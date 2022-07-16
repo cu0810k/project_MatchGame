@@ -459,8 +459,7 @@ btnHard.addEventListener('click', e => {
     item.remove()
   })
 
-  player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Draymond_Green', 'Jonathan_Kuminga',
-    'Jordan_Poole', 'Juan_Toscano-Anderson', 'Klay_Thompson', 'Stephen_Curry']
+  player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II','Jonathan_Kuminga', 'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney','Klay_Thompson', 'Moses_Moody','Stephen_Curry']
 
   playerTemp = []
   playerBtnTemp = []
