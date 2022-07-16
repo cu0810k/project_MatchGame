@@ -472,7 +472,7 @@ btnHard.addEventListener('click', e => {
 // 到簡單的關卡
 btnEasy.addEventListener('click', e => {
 
-  document.body.style = 'background: url(../images/bg.jpg)'
+  document.body.style = 'background: url(images/bg.jpg)'
   container.className = 'container'
   btnGroup.className = 'btn-group easy'
 
