@@ -37,43 +37,41 @@ img, svg {
   background: #ffedad;
   /* background-image: linear-gradient(to bottom, #ffedad 70%, #e7c554 100%); */
   box-shadow: 0 0 0 10px #f4d64a,
-  6px 10px 0 10px #d38d00,
-  -6px 10px 0 10px #d38d00,
-  0px 0px 30px 10px #0a3375,
-  inset 0px 0px 0px 8px #d58901,
-  inset 0px -30px 80px 15px rgba(255, 225, 91, 0.8);
+    6px 10px 0 10px #d38d00,
+    -6px 10px 0 10px #d38d00,
+    0px 0px 30px 10px #0a3375,
+    inset 0px 0px 0px 8px #d58901,
+    inset 0px -30px 80px 15px rgba(255, 225, 91, 0.8);
   margin: 0 30px;
   position: relative;
 }
 
-/* .container::before {
-  content: '';
-  width: calc(100% - 30px);
-  height: calc(100% - 200px);
-  position: absolute;
-  border-radius: 120px;
-  background: #ffe681;
-  opacity: .5;
-  border-radius: 60% 60% 112px 113px;
-  top: 150px;
-} */
+.container.hard{
+  box-shadow: 0 0 0 10px #f4d64a,
+  6px 10px 0 10px #d38d00,
+  -6px 10px 0 10px #d38d00,
+  0px 0px 30px 10px #660613,
+  inset 0px 0px 0px 8px #d58901,
+  inset 0px -30px 80px 15px rgba(255, 225, 91, 0.8);
+}
 
-.text{
+
+.text {
   position: absolute;
   font-size: 5rem;
   font-family: 'Dela Gothic One', cursive;
   letter-spacing: .1em;
   transform: scaleY(1.2);
   z-index: 99;
-  color:#fff;
+  color: #fff;
   -webkit-text-stroke: 2px #000;
-  text-shadow: 
-  2px 0px 0px #000,
-  2px 1px 0px #000;
+  text-shadow:
+    2px 0px 0px #000,
+    2px 1px 0px #000;
   display: none;
 }
 
-.text.show{
+.text.show {
   animation: shock .1s 5;
   display: block;
 }
@@ -123,21 +121,22 @@ img, svg {
   width: 12.5%;
   animation: fadeIn 1s forwards ease-in-out;
   margin-top: -50px;
-    opacity: 0;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
-  0%{
+  0% {
     margin-top: -50px;
     opacity: 0;
   }
-  100%{
+
+  100% {
     margin-top: 0;
     opacity: 1;
   }
 }
 
-.player .pic{
+.player .pic {
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -147,7 +146,7 @@ img, svg {
 }
 
 .player .pic:hover,
-.player .pic.click{
+.player .pic.click {
   border: 4px solid #000;
   box-sizing: border-box;
 }
@@ -164,13 +163,8 @@ img, svg {
   cursor: pointer;
 }
 
-.player .pic.disabled,
-.player img.disabled,
-.btn button.disabled {
-  /* cursor: default; */
-}
 
-.playerBtnList .btn{
+.playerBtnList .btn {
   animation: fadeIn2 .8s forwards ease-in-out;
   margin-bottom: -50px;
   opacity: 0;
@@ -178,11 +172,12 @@ img, svg {
 
 
 @keyframes fadeIn2 {
-  0%{
+  0% {
     margin-bottom: -50px;
     opacity: 0;
   }
-  100%{
+
+  100% {
     margin-bottom: 0;
     opacity: 1;
   }
@@ -208,22 +203,20 @@ img, svg {
   font-family: 'Luckiest Guy', cursive;
   border: 0;
   font-size: 1.6rem;
-  color:#fff;
+  color: #fff;
   -webkit-text-stroke: 1.5px #000;
-  text-shadow: 
-  1px 0px 0px #000,
-  2px 1px 0px #000
-   ;
+  text-shadow:
+    1px 0px 0px #000,
+    2px 1px 0px #000;
 }
 
 .playerBtnList .btn button:hover,
-.playerBtnList .btn button.click{
-  color:#000;
+.playerBtnList .btn button.click {
+  color: #000;
   -webkit-text-stroke: 1.5px #fff;
-  text-shadow: 
-  1px 0px 0px #fff,
-  2px 1px 0px #fff
-   ;
+  text-shadow:
+    1px 0px 0px #fff,
+    2px 1px 0px #fff;
 }
 
 
@@ -270,14 +263,12 @@ svg {
 
 
 
-.btn-group{
+.btn-group {
   /* outline: 1px solid #000; */
   z-index: 9;
 }
 
-.btn-finish,
-.btn-back,
-.btn-restart {
+.btn-group .btn {
   /* font-family: 'Dela Gothic One', cursive; */
   font-size: 2rem;
   padding: 10px 20px;
@@ -285,20 +276,68 @@ svg {
   margin: 30px 20px;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 
-  3px 3px 0px 0px #8d6007,
-  0px 0px 20px 10px #164999;
   text-align: center;
   background: #fff;
   background-image: linear-gradient(170deg, #ffedad 40%, #f2ca46 100%);
 }
 
-.btn-finish:hover ,
-.btn-back:hover ,
-.btn-restart:hover {
+.btn-group .btn:hover {
   position: relative;
   top: 3px;
   left: 3px;
+}
+
+
+.btn-group.easy .btn{
+  border: 5px solid #d38d00;
+  box-shadow:
+    3px 3px 0px 0px #8d6007,
+    0px 0px 20px 10px #164999;
+}
+
+.btn-group.easy .btn:hover {
   box-shadow: 0px 0px 0px 0px #d38d00,
-  0px 0px 20px 10px #164999;
+    0px 0px 20px 10px #164999;
+}
+
+.btn-group.easy .btn-easy{
+  display: none;
+}
+
+
+.btn-group.hard .btn{
+  border: 5px solid #d38d00;
+  box-shadow:
+  3px 3px 0px 0px #8d6007,
+  0px 0px 30px 10px #860f1f;
+}
+
+
+.btn-group.hard .btn:hover {
+  box-shadow: 0px 0px 0px 0px #d38d00,
+    0px 0px 20px 10px #860f1f;
+}
+
+.btn-group.hard .btn-hard{
+  display: none;
+}
+
+
+.btn-group.easy .btn-hard{
+  border: 5px solid #860f1f;
+  box-shadow:
+    3px 3px 0px 0px #860f1f,
+    0px 0px 20px 10px #164999;
+  background: #ad0a20;
+  color:#fff;
+}
+
+
+.btn-group.hard .btn-easy{
+  border: 5px solid #0f8629;
+  box-shadow:
+    3px 3px 0px 0px #0f8629,
+    0px 0px 30px 10px #860f1f;
+  background: #36aa4f;
+  color:#fff;
 }

@@ -1,21 +1,26 @@
 const container = document.querySelector('.container')
 const playerList = document.querySelector('.playerList')
 const playerBtnList = document.querySelector('.playerBtnList')
+const btnGroup = document.querySelector('.btn-group')
 const btnFinish = document.querySelector('.btn-finish')
 const btnBack = document.querySelector('.btn-back')
 const btnRestart = document.querySelector('.btn-restart')
+const btnHard = document.querySelector('.btn-hard')
+const btnEasy = document.querySelector('.btn-easy')
 const text = document.querySelector('.text')
 
 
 const audio = document.getElementById("bgMusic");
 
+
+let level = 'easy'
 // 先建立球員陣列
 // const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
 //   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
 //   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
 //   'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Quinndary_Weatherspoon',
 //   'Stephen_Curry']
-const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
+let player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
   'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Stephen_Curry']
@@ -23,10 +28,11 @@ const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
 
 
 // 創造球員Dom函式
-function PlayerCircle (name, pointWidth, pointHeight) {
+function PlayerCircle (name, pointWidth, pointHeight, level = 'easy') {
   this.name = name
   this.pointWidth = pointWidth,
-    this.pointHeight = pointHeight
+    this.pointHeight = pointHeight,
+    this.level = level
 }
 
 PlayerCircle.prototype.imgCreate = function () {
@@ -37,11 +43,20 @@ PlayerCircle.prototype.imgCreate = function () {
   player.dataset.player = this.name
 
   const pic = document.createElement('div')
-  pic.style = `
+  if (this.level === 'hard') {
+    pic.style = `
+      background-image: url(images/childhood/${this.name}.png),linear-gradient(#fff, #fff);
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: cover;`
+  } else {
+    pic.style = `
               background-image: url(images/${this.name}.png),linear-gradient(#fff, #fff);
               background-repeat: no-repeat;
               background-position: top center;
               background-size: cover;`
+  }
+
   pic.className = `pic ${this.name}`
   pic.dataset.player = this.name
 
@@ -80,7 +95,7 @@ let pointWidth = '20'
 let pointHeight = '20'
 
 // 抓取隨機8人
-function getPlayer () {
+function getPlayer (status = 'easy') {
 
   const arr = setInterval(() => {
 
@@ -91,14 +106,14 @@ function getPlayer () {
 
       // 製作八位球星的Dom
       playerTemp.forEach((item) => {
-        const player = new PlayerCircle(item, pointWidth, pointHeight)
+        const player = new PlayerCircle(item, pointWidth, pointHeight, status)
         player.imgCreate()
       })
 
       //建立 playerTemp 的對應按鈕
       btnRandom(playerTemp)
 
-      return console.log('playerTemp',playerTemp)
+      return console.log('playerTemp', playerTemp)
 
     }
 
@@ -136,7 +151,7 @@ function btnRandom (playerTemp) {
         const playerBtn = new PlayButton(item, pointWidth, pointHeight)
         playerBtn.btnCreate()
       })
-      return console.log('playerBtnTemp',playerBtnTemp)
+      return console.log('playerBtnTemp', playerBtnTemp)
     }
 
     const num = getRandomInt(playerTemp.length)
@@ -354,11 +369,11 @@ btnFinish.addEventListener('click', e => {
   // console.log(currentLine.length)
 
   if (currentLine.length !== 8) {
-    text.innerText='還沒連完(´･_･`)!!!'
-    text.className='text show'
-    setTimeout(()=>{
-      text.className='text'
-    },1200)
+    text.innerText = '還沒連完(´･_･`)!!!'
+    text.className = 'text show'
+    setTimeout(() => {
+      text.className = 'text'
+    }, 1200)
     return // console.log('你還沒連完!')
   }
 
@@ -381,11 +396,11 @@ btnBack.addEventListener('click', e => {
   const currentLine = document.querySelectorAll('.stroke');
 
   if (!currentLine.length) {
-    text.innerText='無法返回了，請向前邁進!!!'
-    text.className='text show'
-    setTimeout(()=>{
-      text.className='text'
-    },1200)
+    text.innerText = '無法返回了，請向前邁進!!!'
+    text.className = 'text show'
+    setTimeout(() => {
+      text.className = 'text'
+    }, 1200)
     return // console.log('無法返回了啦!')
   }
 
@@ -416,6 +431,67 @@ btnRestart.addEventListener('click', e => {
 
   playerTemp = []
   playerBtnTemp = []
-  getPlayer()
+
+  if (level === 'easy') {
+    getPlayer('easy')
+  } else {
+    getPlayer('hard')
+  }
+
+
 })
 
+
+// =====================================
+// 到難的關卡
+btnHard.addEventListener('click', e => {
+
+  document.body.style = 'background: url(../images/bg-hard.jpg)'
+  container.className = 'container hard'
+  btnGroup.className = 'btn-group hard'
+
+  playerList.innerHTML = ''
+  playerBtnList.innerHTML = ''
+  // 刪除全部SVG
+  const currentLine = document.querySelectorAll('.stroke');
+  currentLine.forEach(item => {
+    item.remove()
+  })
+
+  player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Draymond_Green', 'Jonathan_Kuminga',
+    'Jordan_Poole', 'Juan_Toscano-Anderson', 'Klay_Thompson', 'Stephen_Curry']
+
+  playerTemp = []
+  playerBtnTemp = []
+  getPlayer('hard')
+
+  level = 'hard'
+})
+
+// =====================================
+// 到簡單的關卡
+btnEasy.addEventListener('click', e => {
+
+  document.body.style = 'background: url(../images/bg.jpg)'
+  container.className = 'container'
+  btnGroup.className = 'btn-group easy'
+
+  playerList.innerHTML = ''
+  playerBtnList.innerHTML = ''
+  // 刪除全部SVG
+  const currentLine = document.querySelectorAll('.stroke');
+  currentLine.forEach(item => {
+    item.remove()
+  })
+
+  player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
+    'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
+    'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
+    'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Stephen_Curry']
+
+  playerTemp = []
+  playerBtnTemp = []
+  getPlayer('easy')
+  level = 'easy'
+
+})
