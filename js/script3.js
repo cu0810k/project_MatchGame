@@ -447,7 +447,7 @@ btnRestart.addEventListener('click', e => {
 // 到難的關卡
 btnHard.addEventListener('click', e => {
 
-  document.body.style = 'background: url(../images/bg-hard.jpg)'
+  document.body.style = 'background: url(images/bg-hard.jpg)'
   container.className = 'container hard'
   btnGroup.className = 'btn-group hard'
 

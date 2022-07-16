@@ -56,12 +56,12 @@ img, svg {
 
 
 .container.hard {
-  box-shadow: 0 0 0 10px #f4d64a,
-  3px 5px 0 5px #d38d00,
-  -3px 5px 0 5px #d38d00,
-  0px 0px 15px 5px #660613,
-  inset 0px 0px 0px 4px #d58901,
-  inset 0px -15px 40px 7.5px rgba(255, 225, 91, 0.8);
+  box-shadow: 0 0 0 5px #f4d64a,
+    3px 5px 0 5px #d38d00,
+    -3px 5px 0 5px #d38d00,
+    0px 0px 15px 5px #660613,
+    inset 0px 0px 0px 4px #d58901,
+    inset 0px -15px 40px 7.5px rgba(255, 225, 91, 0.8);
 }
 
 
