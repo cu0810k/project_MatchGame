@@ -1,19 +1,4 @@
-const saw = document.querySelector('.saw')
-const sawH1 = document.querySelector('.saw h1')
-const men = document.querySelector('.men')
-const head = document.querySelector('.head')
-const btnYes = document.querySelector('.btn-yes')
-const btnNo = document.querySelector('.btn-no')
-const circle = document.querySelector('.circle')
-const eyeBrowLeft = document.querySelector('.eyeBrowLeft')
-const eyeBrowRight = document.querySelector('.eyeBrowRight')
-const foreheadTop = document.querySelector('.foreheadTop')
-const mouth = document.querySelector('.mouth')
-const mouthTop = document.querySelector('.mouthTop')
-const openText = document.querySelector('.saw h1')
-const openBtnGroup = document.querySelector('.saw .btnGroup')
 const match = document.querySelector('.match')
-
 const container = document.querySelector('.container')
 const playerList = document.querySelector('.playerList')
 const playerBtnList = document.querySelector('.playerBtnList')
@@ -463,7 +448,7 @@ btnRestart.addEventListener('click', e => {
 // 到難的關卡
 btnHard.addEventListener('click', e => {
 
-  document.body.style = 'background: url(images/bg-hard.jpg)'
+  match.style = 'background: url(images/bg-hard.jpg)'
   container.className = 'container hard'
   btnGroup.className = 'btn-group hard'
 
@@ -488,7 +473,7 @@ btnHard.addEventListener('click', e => {
 // 到簡單的關卡
 btnEasy.addEventListener('click', e => {
 
-  document.body.style = 'background: url(images/bg.jpg)'
+  match.style = 'background: url(images/bg.jpg)'
   container.className = 'container'
   btnGroup.className = 'btn-group easy'
 
@@ -514,6 +499,22 @@ btnEasy.addEventListener('click', e => {
 
 
 // =====================================
+const saw = document.querySelector('.saw')
+const sawH1 = document.querySelector('.saw h1')
+const men = document.querySelector('.men')
+const head = document.querySelector('.head')
+const btnYes = document.querySelector('.btn-yes')
+const btnNo = document.querySelector('.btn-no')
+const circle = document.querySelector('.circle')
+const eyeBrowLeft = document.querySelector('.eyeBrowLeft')
+const eyeBrowRight = document.querySelector('.eyeBrowRight')
+const foreheadTop = document.querySelector('.foreheadTop')
+const mouth = document.querySelector('.mouth')
+const mouthTop = document.querySelector('.mouthTop')
+const openText = document.querySelector('.saw h1')
+const openBtnGroup = document.querySelector('.saw .btnGroup')
+
+
 btnYes.addEventListener('click', e => {
   men.style.top = '0px'
   openText.style.transform = 'scale(1)'
