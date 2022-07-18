@@ -61,11 +61,6 @@ PlayerCircle.prototype.imgCreate = function () {
   pic.className = `pic ${this.name}`
   pic.dataset.player = this.name
 
-  // 建立player圖片
-  // const img = document.createElement('img')
-  // img.src = `images/${this.name}.png`
-  // img.className = `img-fluid img-${this.name}`
-  // img.dataset.player = this.name
 
   // 建立point
   const point = document.createElement('span')
@@ -229,8 +224,6 @@ document.addEventListener('click', e => {
 
   // 點到A球員 >　抓取A球員Point的位置
   const playerPoint = document.querySelector(`.point.point_${e.target.nodeName}.${e.target.dataset.player}`)
-  // console.log(playerPoint)
-  // console.log(e)
 
   let obj = {
     cx: playerPoint.offsetLeft + pointWidth / 2,
@@ -239,11 +232,8 @@ document.addEventListener('click', e => {
     name: e.target.dataset.player
   }
   arr.push(obj)
-  // console.log(obj.cx, obj.cy)
-  // console.log(obj)
   e.target.classList.add('click')
 
-  // console.log(arr)
   if (click == 2) {
     /*
       以下情況不能產生連線
@@ -251,11 +241,9 @@ document.addEventListener('click', e => {
       圖片A + 圖片A
       按鈕A + 按鈕B
       按鈕A + 按鈕A
+      >> 兩個項目要不一樣才可以進行
     */
-    // 優化改成 兩個項目要不一樣才可以進行
     if (arr[0].nodeName !== arr[1].nodeName) {
-      // console.log(arr)
-      // console.log(click)
 
       const line = new Svg(
         arr[0].cx,
@@ -268,10 +256,8 @@ document.addEventListener('click', e => {
       line.createLine()
 
       // 將已點到的做標記
-      // if (arr[0].nodeName === 'IMG') {
       if (arr[0].nodeName === 'DIV') {
 
-        // document.querySelector(`.img-fluid.img-${arr[0].name}`).classList.add('disabled')
         document.querySelector(`.pic.${arr[0].name}`).classList.add('disabled')
         document.querySelector(`.btn-${arr[1].name}`).classList.add('disabled')
         document.querySelector(`.pic.${arr[0].name}`).classList.remove('click')
@@ -283,7 +269,6 @@ document.addEventListener('click', e => {
         document.querySelector(`.pic.${arr[1].name}`).classList.add('disabled')
         document.querySelector(`.btn-${arr[0].name}`).classList.remove('click')
         document.querySelector(`.pic.${arr[1].name}`).classList.remove('click')
-        // document.querySelector(`.img-fluid.img-${arr[1].name}`).classList.add('disabled')
 
       }
 
@@ -292,9 +277,6 @@ document.addEventListener('click', e => {
 
     } else {
 
-      // console.log(`連續按到兩個了${arr[1].nodeName}`)
-      // console.log(`連續按到兩個了${arr[0].nodeName}`)
-
       // 將第二個按到的刪除
       // click也要改回成 1
       // 一個返回上一步的概念
@@ -302,8 +284,6 @@ document.addEventListener('click', e => {
       audio.play();
       arr.pop()
       click = 1
-      // // console.log(arr)
-      // // console.log(click)
       return
 
     }
@@ -344,7 +324,6 @@ Svg.prototype.createLine = function () {
 
   svg.appendChild(shape)
   container.appendChild(svg)
-  // document.body.appendChild(svg)
 
   // 判斷有沒有連線成功
   if (this.playerA.name === this.playerB.name) {
@@ -363,11 +342,9 @@ Svg.prototype.createLine = function () {
 // 完成送出
 
 btnFinish.addEventListener('click', e => {
-  // console.log('123')
+
   // 抓取目前有幾條線
   const currentLine = document.querySelectorAll('.stroke');
-  // console.log(currentLine)
-  // console.log(currentLine.length)
 
   if (currentLine.length !== 8) {
     text.innerText = '還沒連完(´･_･`)!!!'
@@ -375,7 +352,7 @@ btnFinish.addEventListener('click', e => {
     setTimeout(() => {
       text.className = 'text'
     }, 1200)
-    return // console.log('你還沒連完!')
+    return
   }
 
   currentLine.forEach((item, index) => {
@@ -393,6 +370,7 @@ btnFinish.addEventListener('click', e => {
 // 返回
 
 btnBack.addEventListener('click', e => {
+
   // 抓取目前有幾條線
   const currentLine = document.querySelectorAll('.stroke');
 
@@ -403,16 +381,14 @@ btnBack.addEventListener('click', e => {
     setTimeout(() => {
       text.className = 'text'
     }, 1200)
-    return // console.log('無法返回了啦!')
+    return
   }
 
   // 先前有特別在line上設置分別連線的圖片跟按鈕是誰
-  // const img = currentLine[currentLine.length - 1].dataset.IMG
   const div = currentLine[currentLine.length - 1].dataset.DIV
   const btn = currentLine[currentLine.length - 1].dataset.BUTTON
 
   currentLine[currentLine.length - 1].remove()
-  // document.querySelector(`.img-fluid.img-${img}`).classList.remove('disabled')
   document.querySelector(`.pic.${div}`).classList.remove('disabled')
   document.querySelector(`.btn-${btn}`).classList.remove('disabled')
 
@@ -421,6 +397,7 @@ btnBack.addEventListener('click', e => {
 
 // =====================================
 // 重新開始
+
 btnRestart.addEventListener('click', e => {
 
   playerList.innerHTML = ''
@@ -446,6 +423,7 @@ btnRestart.addEventListener('click', e => {
 
 // =====================================
 // 到難的關卡
+
 btnHard.addEventListener('click', e => {
 
   match.style = 'background: url(images/bg-hard.jpg)'
@@ -471,6 +449,7 @@ btnHard.addEventListener('click', e => {
 
 // =====================================
 // 到簡單的關卡
+
 btnEasy.addEventListener('click', e => {
 
   match.style = 'background: url(images/bg.jpg)'
@@ -479,6 +458,7 @@ btnEasy.addEventListener('click', e => {
 
   playerList.innerHTML = ''
   playerBtnList.innerHTML = ''
+  
   // 刪除全部SVG
   const currentLine = document.querySelectorAll('.stroke');
   currentLine.forEach(item => {
