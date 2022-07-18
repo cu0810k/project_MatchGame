@@ -539,10 +539,18 @@ const openText = document.querySelector('.saw h1')
 const openBtnGroup = document.querySelector('.saw .btnGroup')
 
 
+const isMobileDevice = () => {
+  const mobileDevice = ['Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'Windows Phone']
+  let isMobileDevice = mobileDevice.some(e => navigator.userAgent.match(e))
+  return isMobileDevice
+}
+
+if (isMobileDevice()) {
+}
+
 btnYes.addEventListener('click', e => {
   men.style.top = '0px'
   openText.style.transform = 'scale(1)'
-  circle.style.transform = 'scale(1)'
   openBtnGroup.style.transform = 'scale(1)'
   saw.classList.add('out')
   men.classList.add('out')
@@ -550,6 +558,11 @@ btnYes.addEventListener('click', e => {
   openText.classList.add('out')
   openBtnGroup.classList.add('out')
   match.classList.add('show')
+  if (isMobileDevice()) {
+    circle.style.transform = 'scale(1.5)'
+  }else{
+    circle.style.transform = 'scale(1)'
+  }
 })
 
 
