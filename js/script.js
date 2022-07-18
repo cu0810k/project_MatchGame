@@ -16,11 +16,6 @@ const audio = document.getElementById("bgMusic");
 
 let level = 'easy'
 // 先建立球員陣列
-// const player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
-//   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
-//   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
-//   'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Quinndary_Weatherspoon',
-//   'Stephen_Curry']
 let player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
@@ -32,8 +27,8 @@ let player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
 function PlayerCircle (name, pointWidth, pointHeight, level = 'easy') {
   this.name = name
   this.pointWidth = pointWidth,
-    this.pointHeight = pointHeight,
-    this.level = level
+  this.pointHeight = pointHeight,
+  this.level = level
 }
 
 PlayerCircle.prototype.imgCreate = function () {
@@ -75,16 +70,63 @@ PlayerCircle.prototype.imgCreate = function () {
   playerList.appendChild(player)
 }
 
+// 改成 class 
+// class PlayerCircle {
+//   constructor(name, pointWidth, pointHeight, level = 'easy') {
+//     this.name = name
+//     this.pointWidth = pointWidth,
+//     this.pointHeight = pointHeight,
+//     this.level = level
+//   }
+
+//   imgCreate () {
+//     // 建立player節點
+//     const player = document.createElement('div')
+//     player.className = `player ${this.name}`
+//     player.dataset.player = this.name
+
+//     const pic = document.createElement('div')
+//     if (this.level === 'hard') {
+//       pic.style = `
+//       background-image: url(images/childhood/${this.name}.png),linear-gradient(#fff, #fff);
+//       background-repeat: no-repeat;
+//       background-position: top center;
+//       background-size: cover;`
+//     } else {
+//       pic.style = `
+//               background-image: url(images/${this.name}.png),linear-gradient(#fff, #fff);
+//               background-repeat: no-repeat;
+//               background-position: top center;
+//               background-size: cover;`
+//     }
+
+//     pic.className = `pic ${this.name}`
+//     pic.dataset.player = this.name
+
+
+//     // 建立point
+//     const point = document.createElement('span')
+//     point.className = `point point_DIV ${this.name}`
+//     point.dataset.player = this.name
+//     point.style.width = this.pointWidth + 'px'
+//     point.style.height = this.pointHeight + 'px'
+
+//     // pic.appendChild(img)
+//     player.appendChild(pic)
+//     player.appendChild(point)
+//     playerList.appendChild(player)
+//   }
+// }
 
 
 // 建立隨機數
 // https://ithelp.ithome.com.tw/articles/10197904
 // Math.random() --- 隨機產生出0~1之間的小數
 // Math.floor() ---- 無條件捨去
+
 function getRandomInt (max) {
   return Math.floor(Math.random() * max);
 }
-
 
 let playerTemp = []
 let pointWidth = '15'
@@ -458,7 +500,7 @@ btnEasy.addEventListener('click', e => {
 
   playerList.innerHTML = ''
   playerBtnList.innerHTML = ''
-  
+
   // 刪除全部SVG
   const currentLine = document.querySelectorAll('.stroke');
   currentLine.forEach(item => {
@@ -479,6 +521,8 @@ btnEasy.addEventListener('click', e => {
 
 
 // =====================================
+// 奪魂鋸
+
 const saw = document.querySelector('.saw')
 const sawH1 = document.querySelector('.saw h1')
 const men = document.querySelector('.men')
@@ -514,10 +558,10 @@ btnNo.addEventListener('click', e => {
   eyeBrowLeft.classList.add('sad')
   eyeBrowRight.classList.add('sad')
   mouth.classList.remove('open')
-  mouthTop.style='top:17.84vw'
+  mouthTop.style = 'top:17.84vw'
   foreheadTop.classList.add('move')
-  sawH1.innerText='Bye...'
-  setTimeout(()=>{
-    window.open("about:blank","_self").close()
-  },800)
+  sawH1.innerText = 'Bye...'
+  setTimeout(() => {
+    window.open("about:blank", "_self").close()
+  }, 800)
 })
