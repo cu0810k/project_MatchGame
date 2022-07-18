@@ -844,15 +844,16 @@ svg {
   border-radius: 50%;
   overflow: hidden;
   background: #fff;
-  transform: scale(0);
   margin: 80px 0;
 }
 
 .circle.show {
+  transform: scale(0);
   animation: circleShow .3s .3s 1 forwards;
 }
 
 .circle.out {
+  transform: scale(1.5);
   animation: circleOut .3s .6s 1 forwards;
 }
 
@@ -883,6 +884,17 @@ svg {
   .circle {
     margin: 50px 0;
   }
+
+  .circle.show {
+    transform: scale(0);
+    animation: circleShow .3s .3s 1 forwards;
+  }
+
+  .circle.out {
+    transform: scale(1);
+    animation: circleOut .3s .6s 1 forwards;
+  }
+
 
   @keyframes circleShow {
     0% {

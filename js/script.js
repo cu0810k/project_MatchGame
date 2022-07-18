@@ -558,11 +558,11 @@ btnYes.addEventListener('click', e => {
   openText.classList.add('out')
   openBtnGroup.classList.add('out')
   match.classList.add('show')
-  if (isMobileDevice()) {
-    circle.style.transform = 'scale(1.5)'
-  }else{
-    circle.style.transform = 'scale(1)'
-  }
+  // if (isMobileDevice()) {
+  //   circle.style.transform = 'scale(1.5)'
+  // }else{
+  //   circle.style.transform = 'scale(1)'
+  // }
 })
 
 
