@@ -538,6 +538,6 @@ btnNo.addEventListener('click', e => {
   foreheadTop.classList.add('move')
   sawH1.innerText='Bye...'
   setTimeout(()=>{
-    window.close()
+    window.open("about:blank","_self").close()
   },800)
 })
