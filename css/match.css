@@ -5,11 +5,11 @@ body, html {
   padding: 0;
   margin: 0;
   list-style: none;
-  background: #2365c5;
+  background: #000;
   width: 100%;
   height: 100%;
   font-family: 'Luckiest Guy', cursive;
-  background: url(../images/bg.jpg);
+  /* background: url(../images/bg.jpg); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -703,4 +703,923 @@ svg {
 
 .btn-group.hard .btn-hard {
   display: none;
+}
+
+
+/*----------------------------------*/
+@media (min-width: 992px) {
+  .br-mobile {
+    display: none;
+  }
+}
+
+.wrap {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  color: #fff;
+}
+
+
+.saw {
+  background: #000;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.saw.out {
+  animation: sawOut .3s .7s 1 forwards;
+}
+
+@keyframes sawOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@media (min-width: 992px) {
+  .saw {
+    transform: scale(1);
+  }
+}
+
+.saw h1 {
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 2.5rem;
+  transform: scale(0);
+}
+
+.saw h1.show {
+  animation: scaleShow .3s 1 forwards;
+}
+
+.saw h1.out {
+  animation: scaleOut .3s 1 forwards;
+}
+
+@media (min-width: 576px) {
+  .saw h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .saw h1 {}
+}
+
+.saw .btnGroup {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  transform: scale(0);
+}
+
+.saw .btnGroup.show {
+  animation: scaleShow .3s .6s 1 forwards;
+}
+
+.saw .btnGroup.out {
+  animation: scaleOut .3s .15s 1 forwards;
+}
+
+.saw .btnGroup .btn {
+  font-family: 'Luckiest Guy', cursive;
+  background: #000;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 10px 40px;
+  border: 5px solid #fff;
+  margin: 0 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+  .saw .btnGroup .btn {
+    font-size: 2rem;
+    padding: 10px 50px;
+    margin: 0 20px;
+  }
+}
+
+.saw .btnGroup .btn:hover {
+  background: #fff;
+  color: #000;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+
+.circle {
+  width: 29.896vw;
+  height: 29.896vw;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  transform: scale(0);
+  margin: 80px 0;
+}
+
+.circle.show {
+  animation: circleShow .3s .3s 1 forwards;
+}
+
+.circle.out {
+  animation: circleOut .3s .6s 1 forwards;
+}
+
+
+
+@keyframes circleShow {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes circleOut {
+  0% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+@media (min-width: 576px) {
+  .circle {
+    margin: 50px 0;
+  }
+
+  @keyframes circleShow {
+    0% {
+      transform: scale(0);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes circleOut {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0);
+    }
+  }
+}
+
+
+.men {
+  /* width: 574px; */
+  width: 29.896vw;
+  /* height: 591px; */
+  height: 30.781vw;
+  overflow: hidden;
+  /* border-radius: 50%; */
+  /* transform: scale(1.5);   */
+  /* margin: 50px 0; */
+  position: relative;
+  top: 100%;
+}
+
+.men.show {
+  animation: menShow .4s .9s linear 1 forwards;
+}
+
+.men.out {
+  animation: menOut .4s .3s linear 1 forwards;
+}
+
+@keyframes menShow {
+  0% {
+    top: 100%;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes menOut {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .men {
+    transform: scale(1);
+    /* margin: 30px 0; */
+  }
+}
+
+
+.head, .clothes {
+  transform: scale(.8);
+}
+
+.head {
+  background-color: #dddddd;
+  /* transform-origin: 287px 287px; */
+  transform-origin: 14.948vw 14.948vw;
+  position: relative;
+  z-index: 3;
+}
+
+.head.shake {
+  animation: shake .08s 1.4s linear infinite alternate;
+}
+
+.clothes {
+  position: relative;
+  /* top: 55px; */
+  top: 2.865vw;
+}
+
+
+@keyframes shake {
+  0% {
+    transform: rotate(5deg) scale(.8);
+  }
+
+  100% {
+    transform: rotate(-5deg) scale(.8);
+  }
+}
+
+/*額頭*/
+.forehead {
+  /* width: 282px; */
+  width: 14.688vw;
+  /* height: 351px; */
+  height: 18.281vw;
+  background-color: #ebebeb;
+  position: absolute;
+  /* top: 35px; */
+  top: 1.823vw;
+  /* left: 13px; */
+  left: 0.677vw;
+  right: 0;
+  margin: auto;
+  border-radius: 50% 50%;
+  z-index: 1;
+}
+
+.foreheadTop {
+  /* width: 28px;
+  height: 28px; */
+  width: 1.458vw;
+  height: 2.458vw;
+  background-color: #ebebeb;
+  position: absolute;
+  /* top: 157px;
+  left: 13px; */
+  top: 8.177vw;
+  left: 0.677vw;
+  right: 0;
+  margin: auto;
+  z-index: 8;
+}
+
+.foreheadTop.move {
+  animation: foreheadTopMove .5s 1 forwards;
+}
+
+@keyframes foreheadTopMove {
+  0% {
+    top: 8.177vw;
+  }
+
+  100% {
+    top: 6.177vw;
+  }
+}
+
+/*眉毛*/
+.eyeBrowLeft, .eyeBrowRight {
+  /* width: 205px; */
+  width: 10.677vw;
+  /* height: 95px; */
+  height: 4.948vw;
+  background: linear-gradient(0deg, transparent 0%, transparent 20%, #ebebeb 20%, #ebebeb 100%);
+  /* border-radius: 169px 190px 0 0; */
+  border-radius: 8.802vw 9.896vw 0 0;
+  position: absolute;
+  /* top: 116px; */
+  top: 6.042vw;
+  /* left: 109px; */
+  /* left: 5.677vw; */
+  left: 4.77vw;
+  transform: rotate(19.5deg);
+  transform-origin: 50% 100%;
+  z-index: 10;
+}
+
+.eyeBrowRight {
+  /* border-radius: 165px 189px 0 0; */
+  border-radius: 8.594vw 9.844vw 0 0;
+  transform: scaleX(-1) rotate(18.5deg);
+
+  /* width: 197px; */
+  width: 10.260vw;
+  /* left: 278px; */
+  /* left: 14.479vw; */
+  left: 15.3vw;
+  /* top: 118px; */
+  top: 6.146vw;
+  top: 6.07vw;
+}
+
+.eyeBrowLeft.sad {
+  animation: sad .5s 1 forwards;
+}
+
+.eyeBrowRight.sad {
+  animation: sad2 .5s 1 forwards;
+}
+
+@keyframes sad {
+  0% {
+    transform: rotate(19.5);
+  }
+
+  100% {
+    transform: rotate(-11.5deg);
+  }
+}
+
+@keyframes sad2 {
+  0% {
+    transform: scaleX(-1) rotate(19.5);
+  }
+
+
+  100% {
+    transform: scaleX(-1) rotate(-11.5deg);
+  }
+}
+
+/* 眼睛 */
+.eyeLeft,
+.eyeRight {
+  /* width: 140px; */
+  width: 7.292vw;
+  /* height: 140px; */
+  height: 7.292vw;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  /* top: 153px; */
+  top: 7.969vw;
+  /* left: 118px; */
+  left: 6.146vw;
+  z-index: 7;
+}
+
+.eyeRight {
+  /* left: 323px; */
+  left: 16.823vw;
+}
+
+.eyeLeft::before,
+.eyeRight::before {
+  content: '';
+  display: block;
+  /* width: 34px; */
+  width: 1.771vw;
+  /* height: 34px; */
+  height: 1.771vw;
+  background-color: #000;
+  position: absolute;
+  /* top: 1px; */
+  top: 0.052vw;
+  bottom: 0;
+  /* left: -1px; */
+  left: -0.052vw;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 4px solid #c00000;
+  animation: eyeLight .1s infinite;
+}
+
+@keyframes eyeLight {
+  0% {
+    border: 4px solid #c00000;
+  }
+
+  100% {
+    border: 4px solid #ffff00;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .eyeLeft::before,
+  .eyeRight::before {
+    border: 9px solid #c00000;
+  }
+
+  @keyframes eyeLight {
+    0% {
+      border: 9px solid #c00000;
+    }
+
+    100% {
+      border: 9px solid #ffff00;
+    }
+  }
+}
+
+
+/* 太陽穴 */
+.eyeTempleLeft,
+.eyeTempleRight {
+  background: #dddddd;
+  /* width: 194px; */
+  width: 10.104vw;
+  /* height: 194px; */
+  height: 10.104vw;
+  position: absolute;
+  /* top: 115px; */
+  top: 5.990vw;
+  /* left: 89px; */
+  left: 4.635vw;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.eyeTempleRight {
+  /* left: 297px; */
+  left: 15.469vw;
+}
+
+
+/* 鼻子 */
+.nose {
+  /* width: 87px; */
+  width: 4.531vw;
+  /* height: 200px; */
+  height: 10.417vw;
+  border-radius: 50% 50%;
+  background: #dddddd;
+  position: absolute;
+  /* left: 250px; */
+  left: 13.021vw;
+  /* top: 172px; */
+  top: 8.958vw;
+  z-index: 7;
+}
+
+/* 嘴巴 */
+.mouth {
+  /* width: 210px; */
+  width: 10.938vw;
+  /* height: 40px; */
+  height: 2.083vw;
+  position: absolute;
+  /* left: 11px; */
+  left: 0.573vw;
+  right: 0;
+  margin: auto;
+  /* top: 332px; */
+  top: 17.292vw;
+  background-color: #c00000;
+  border-radius: 200%;
+  z-index: 5;
+}
+
+.mouth.open {
+  animation: mouthOpen .1s 1.4s linear infinite alternate;
+}
+
+@keyframes mouthOpen {
+  0% {
+    /* top: 332px; */
+    top: 17.292vw;
+    /* height: 40px; */
+    height: 2.083vw;
+  }
+
+  100% {
+    /* top: 281px; */
+    top: 14.635vw;
+    /* height: 165px; */
+    height: 8.594vw;
+  }
+}
+
+.mouthTop {
+  content: '';
+  /* width: 230px; */
+  width: 11.979vw;
+  /* height: 74px; */
+  height: 3.854vw;
+  display: block;
+  margin: auto;
+  position: absolute;
+  /* top: 285px; */
+  top: 14.84vw;
+  /* left: 11px; */
+  left: 0.573vw;
+  right: 0;
+  background-color: #ebebeb;
+  border-radius: 20%;
+  z-index: 6;
+}
+
+/* 臉頰 */
+.cheekLeft,
+.cheekRight {
+  /* width: 129px; */
+  width: 6.719vw;
+  /* height: 129px; */
+  height: 6.719vw;
+  background: #dddddd;
+  border-radius: 50%;
+  position: absolute;
+  /* top: 250px; */
+  top: 13.021vw;
+  /* left: 57px; */
+  left: 2.969vw;
+  z-index: 8;
+}
+
+.cheekLeft {
+  /* box-shadow:
+    inset -5px 5px 0px 25px #dddddd,
+    inset -5px 5px 0px 34px #e80303,
+    inset -5px 5px 0px 44px #dddddd,
+    inset -5px 5px 0px 53px #e80303; */
+
+  box-shadow:
+    inset -0.260vw 0.260vw 0px 1.302vw #dddddd,
+    inset -0.260vw 0.260vw 0px 1.771vw #e80303,
+    inset -0.260vw 0.260vw 0px 2.292vw #dddddd,
+    inset -0.260vw 0.260vw 0px 2.760vw #e80303;
+}
+
+.cheekRight {
+  /* left: 392px; */
+  left: 20.417vw;
+  /* box-shadow: inset 5px 5px 0px 25px #dddddd,
+    inset 5px 5px 0px 34px #e80303,
+    inset 5px 5px 0px 44px #dddddd,
+    inset 5px 5px 0px 53px #e80303; */
+
+  box-shadow: inset 0.260vw 0.260vw 0 1.302vw #dddddd,
+    inset 0.260vw 0.260vw 0 1.771vw #e80303,
+    inset 0.260vw 0.260vw 0 2.292vw #dddddd,
+    inset 0.260vw 0.260vw 0 2.760vw #e80303;
+}
+
+.cheekLeft::before,
+.cheekRight::before {
+  content: '';
+  display: block;
+  /* width: 131px; */
+  /* height: 131px; */
+  width: 6.823vw;
+  height: 6.823vw;
+  background-color: transparent;
+  border-radius: 50%;
+  /* border: 4px solid #dddddd; */
+  border: 0.208vw solid #dddddd;
+  position: absolute;
+  /* left: -0.5px; */
+  left: -0.026vw;
+  /* top: -1.5px; */
+  top: -0.078vw;
+  box-sizing: border-box;
+}
+
+.cheekRight::before {
+  /* left: -1.5px; */
+  left: -0.078vw;
+}
+
+/* 下巴 */
+
+.jaw {
+  /* width: 293px; */
+  width: 15.260vw;
+  /* height: 372px; */
+  height: 19.375vw;
+  background-color: #ebebeb;
+  position: absolute;
+  /* top: 120px; */
+  top: 6.250vw;
+  /* left: 13px; */
+  left: 0.677vw;
+  right: 0;
+  margin: auto;
+  border-radius: 51% 50%;
+  z-index: 4;
+}
+
+.jawLeft,
+.jawRight {
+  /* width: 150px; */
+  width: 7.813vw;
+  /* height: 252px; */
+  height: 13.125vw;
+  background-color: #dddddd;
+  position: absolute;
+  /* top: 222px; */
+  top: 11.563vw;
+  /* left: 124px; */
+  left: 6.458vw;
+  border-radius: 51% 50%;
+  z-index: 3;
+}
+
+.jawRight {
+  /* left: 307px; */
+  left: 15.990vw;
+}
+
+/* 頭髮 */
+.hairLeft,
+.hairRight {
+  /* width: 400px; */
+  /* height: 352px; */
+  width: 20.833vw;
+  height: 18.333vw;
+  background: #000;
+  position: absolute;
+  /* left: -44px; */
+  left: -2.292vw;
+  /* top: 122px; */
+
+  /* border-top-left-radius: 249px 352px; */
+  border-top-left-radius: 12.969vw 18.333vw;
+  /* border-bottom-right-radius: 288px 300px; */
+  border-bottom-right-radius: 15vw 15.652vw;
+  transform: rotate(-21deg);
+  z-index: 0;
+
+
+
+  background: #000;
+  position: absolute;
+
+
+  /* top: 117px; */
+  top: 6.094vw;
+  /* border-top-left-radius: 249px 352px; */
+  border-top-left-radius: 12.969vw 18.333vw;
+  /* border-bottom-right-radius: 288px 300px; */
+  border-bottom-right-radius: 15vw 15.652vw;
+  transform: rotate(-24deg);
+  z-index: 0;
+
+}
+
+.hairRight {
+  /* left: 205px; */
+  left: 10.677vw;
+  /* top: 119px; */
+  top: 6.198vw;
+  transform: rotate(21deg) scaleY(-1);
+  /* border-top-left-radius: 323px 347px; */
+  border-top-left-radius: 16.823vw 18.073vw;
+  /* border-bottom-right-radius: 284px 288px; */
+  border-bottom-right-radius: 14.792vw 15vw;
+}
+
+.hairTop {
+  /* width: 569px; */
+  width: 29.635vw;
+  /* height: 458px; */
+  height: 23.854vw;
+  background: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  border-radius: 50%;
+  z-index: 0;
+  border-top-left-radius: 53%;
+  border-top-right-radius: 53%;
+  border-bottom-left-radius: 14% 28%;
+  border-bottom-right-radius: 52% 23%;
+
+  /* animation: hairTop .5s linear infinite alternate; */
+}
+
+@keyframes hairTop {
+  0% {
+    border-top-left-radius: 44%;
+  }
+
+  100% {
+    border-top-right-radius: 44%;
+  }
+}
+
+/* 領子 */
+
+.collar {
+  /* width: 85px; */
+  width: 4.427vw;
+  /* height: 85px; */
+  height: 4.427vw;
+  position: absolute;
+  /* top: 456px; */
+  top: 23.750vw;
+  /* left: 11px; */
+  left: 0.573vw;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #c00000;
+  z-index: 2;
+}
+
+.collarLeft,
+.collarRight {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  /* top: 457px; */
+  top: 23.802vw;
+  /* left: 141px; */
+  left: 7.344vw;
+  /* border-top: 129px solid #c00000;
+  border-left: 51px solid transparent;
+  border-right: 78px solid transparent;
+  border-bottom: 90px solid transparent; */
+  border-top: 6.719vw solid #c00000;
+  border-left: 2.656vw solid transparent;
+  border-right: 4.063vw solid transparent;
+  border-bottom: 4.688vw solid transparent;
+  transform: rotate(11deg);
+  z-index: 2;
+}
+
+.collarRight {
+  /* left: 303px; */
+  left: 15.781vw;
+  transform: rotate(-10deg) scaleX(-1);
+  /* top: 455px; */
+  top: 23.698vw;
+}
+
+/* 衣服 */
+.cloth {
+  /* width: 459px; */
+  width: 23.906vw;
+  /* height: 475px; */
+  height: 24.740vw;
+  position: absolute;
+  /* top: 457px; */
+  top: 23.802vw;
+  /* left: 11px; */
+  left: 0.573vw;
+  right: 0;
+  margin: auto;
+  border-radius: 59%;
+  background: #000;
+  z-index: 1;
+}
+
+.clothInner {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  /* top: 503px; */
+  top: 23.198vw;
+  /* left: 230px; */
+  left: 11.979vw;
+  /* border-top: 211px solid #fff;
+  border-left: 63px solid transparent;
+  border-right: 63px solid transparent;
+  border-bottom: 0px solid transparent; */
+  border-top: 10.990vw solid #fff;
+  border-left: 3.281vw solid transparent;
+  border-right: 3.281vw solid transparent;
+  border-bottom: 0px solid transparent;
+  z-index: 1;
+}
+
+
+
+.match {
+  background: #0f8629;
+  width: 100%;
+  height: 100%;
+  background: url(../images/bg.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-clip-path: circle(0% at 50% 50%);
+}
+
+@media (min-width: 1600px) {
+  .match {
+    flex-direction: row;
+  }
+}
+
+.match.show {
+  animation: matchShow .5s 1s 1 forwards;
+}
+
+
+@keyframes matchShow {
+  0% {
+    -webkit-clip-path: circle(0% at 50% 50%);
+  }
+
+  100% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+  }
+}
+
+
+
+@keyframes scaleShow {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+@media (min-width: 576px) {
+  @keyframes scaleShow {
+    0% {
+      transform: scale(0);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleOut {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0);
+    }
+  }
 }

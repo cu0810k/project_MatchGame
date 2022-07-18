@@ -1,3 +1,19 @@
+const saw = document.querySelector('.saw')
+const sawH1 = document.querySelector('.saw h1')
+const men = document.querySelector('.men')
+const head = document.querySelector('.head')
+const btnYes = document.querySelector('.btn-yes')
+const btnNo = document.querySelector('.btn-no')
+const circle = document.querySelector('.circle')
+const eyeBrowLeft = document.querySelector('.eyeBrowLeft')
+const eyeBrowRight = document.querySelector('.eyeBrowRight')
+const foreheadTop = document.querySelector('.foreheadTop')
+const mouth = document.querySelector('.mouth')
+const mouthTop = document.querySelector('.mouthTop')
+const openText = document.querySelector('.saw h1')
+const openBtnGroup = document.querySelector('.saw .btnGroup')
+const match = document.querySelector('.match')
+
 const container = document.querySelector('.container')
 const playerList = document.querySelector('.playerList')
 const playerBtnList = document.querySelector('.playerBtnList')
@@ -459,7 +475,7 @@ btnHard.addEventListener('click', e => {
     item.remove()
   })
 
-  player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II','Jonathan_Kuminga', 'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney','Klay_Thompson', 'Moses_Moody','Stephen_Curry']
+  player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga', 'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson', 'Moses_Moody', 'Stephen_Curry']
 
   playerTemp = []
   playerBtnTemp = []
@@ -494,4 +510,33 @@ btnEasy.addEventListener('click', e => {
   getPlayer('easy')
   level = 'easy'
 
+})
+
+
+// =====================================
+btnYes.addEventListener('click', e => {
+  men.style.top = '0px'
+  openText.style.transform = 'scale(1)'
+  circle.style.transform = 'scale(1)'
+  openBtnGroup.style.transform = 'scale(1)'
+  saw.classList.add('out')
+  men.classList.add('out')
+  circle.classList.add('out')
+  openText.classList.add('out')
+  openBtnGroup.classList.add('out')
+  match.classList.add('show')
+})
+
+
+btnNo.addEventListener('click', e => {
+  head.classList.remove('shake')
+  eyeBrowLeft.classList.add('sad')
+  eyeBrowRight.classList.add('sad')
+  mouth.classList.remove('open')
+  mouthTop.style='top:17.84vw'
+  foreheadTop.classList.add('move')
+  sawH1.innerText='Bye...'
+  setTimeout(()=>{
+    window.close()
+  },800)
 })
