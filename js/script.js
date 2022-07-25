@@ -267,12 +267,15 @@ document.addEventListener('click', e => {
   // 點到A球員 >　抓取A球員Point的位置
   const playerPoint = document.querySelector(`.point.point_${e.target.nodeName}.${e.target.dataset.player}`)
 
+  console.log(playerPoint)
+
   let obj = {
     cx: playerPoint.offsetLeft + pointWidth / 2,
     cy: playerPoint.offsetTop + pointWidth / 2,
     nodeName: e.target.nodeName,
     name: e.target.dataset.player
   }
+  console.log(obj)
   arr.push(obj)
   e.target.classList.add('click')
 
@@ -578,3 +581,33 @@ btnNo.addEventListener('click', e => {
     window.open("about:blank", "_self").close()
   }, 800)
 })
+
+
+// =====================================
+// 解決SVG無法RWD
+
+addEventListener('resize', (e) => {
+
+  const arr = document.querySelectorAll('svg')
+
+  // 判斷目前有沒有線
+  if(!arr.length){
+    return
+  }
+
+  arr.forEach((item,index)=>{
+    console.log(item)
+    //抓取該線所連接的DIV跟BUTTON
+    const DIV = arr[index].dataset.DIV;
+    const BUTTON = arr[index].dataset.BUTTON;
+
+    const newX1 = document.querySelector(`span.point.point_DIV.${DIV}`).offsetLeft + pointWidth / 2;
+    const newY1 = document.querySelector(`span.point.point_DIV.${DIV}`).offsetTop + pointWidth / 2;
+  
+    const newX2 = document.querySelector(`span.point.point_BUTTON.${BUTTON}`).offsetLeft + pointWidth / 2;
+    const newY2 = document.querySelector(`span.point.point_BUTTON.${BUTTON}`).offsetTop + pointWidth / 2;
+
+    arr[index].innerHTML = `<line x1="${newX1}" y1="${newY1}" x2="${newX2}" y2="${newY2}" stroke-width="8" stroke-linecap="round"></line>`
+  })
+
+});
