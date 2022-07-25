@@ -151,7 +151,7 @@ function getPlayer (status = 'easy') {
       //建立 playerTemp 的對應按鈕
       btnRandom(playerTemp)
 
-      return console.log('playerTemp', playerTemp)
+      return // console.log('playerTemp', playerTemp)
 
     }
 
@@ -189,7 +189,7 @@ function btnRandom (playerTemp) {
         const playerBtn = new PlayButton(item, pointWidth, pointHeight)
         playerBtn.btnCreate()
       })
-      return console.log('playerBtnTemp', playerBtnTemp)
+      return // console.log('playerBtnTemp', playerBtnTemp)
     }
 
     const num = getRandomInt(playerTemp.length)
@@ -267,7 +267,7 @@ document.addEventListener('click', e => {
   // 點到A球員 >　抓取A球員Point的位置
   const playerPoint = document.querySelector(`.point.point_${e.target.nodeName}.${e.target.dataset.player}`)
 
-  console.log(playerPoint)
+  // console.log(playerPoint)
 
   let obj = {
     cx: playerPoint.offsetLeft + pointWidth / 2,
@@ -275,7 +275,7 @@ document.addEventListener('click', e => {
     nodeName: e.target.nodeName,
     name: e.target.dataset.player
   }
-  console.log(obj)
+
   arr.push(obj)
   e.target.classList.add('click')
 
@@ -596,7 +596,7 @@ addEventListener('resize', (e) => {
   }
 
   arr.forEach((item,index)=>{
-    console.log(item)
+    // console.log(item)
     //抓取該線所連接的DIV跟BUTTON
     const DIV = arr[index].dataset.DIV;
     const BUTTON = arr[index].dataset.BUTTON;
