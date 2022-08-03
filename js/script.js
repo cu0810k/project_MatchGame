@@ -304,12 +304,15 @@ function Svg (cx1, cy1, cx2, cy2, playerA, playerB) {
 }
 
 Svg.prototype.createLine = function () {
+
   // let newSvg = document.createElement('svg'); // NG
   let svg = document.createElementNS(svgNs, 'svg');
   svg.setAttributeNS(null, 'class', 'stroke');
-  // 為了做上一部的功能而設置的dataset
+
+  // 為了做上一步的功能而設置的dataset
   svg.setAttributeNS(null, `data-${this.playerA.nodeName}`, `${this.playerA.name}`);
   svg.setAttributeNS(null, `data-${this.playerB.nodeName}`, `${this.playerB.name}`);
+
   // 線條 x:left , y:top
   const shape = document.createElementNS(svgNs, 'line');
   shape.setAttributeNS(null, 'x1', this.x1);
