@@ -15,12 +15,12 @@ const audio = document.getElementById("bgMusic");
 
 
 let level = 'easy'
+
 // 先建立球員陣列
 let player = ['Andre_Iguodala', 'Andrew_Wiggins', 'Chris_Chiozza',
   'Damion_Lee', 'Draymond_Green', 'Gary_Payton_II', 'Jonathan_Kuminga',
   'Jordan_Poole', 'Juan_Toscano-Anderson', 'Kevon_Looney', 'Klay_Thompson',
   'Moses_Moody', 'Nemanja_Bjelica', 'Otto_Porter_Jr', 'Stephen_Curry']
-
 
 
 // 創造球員Dom函式
@@ -64,65 +64,15 @@ PlayerCircle.prototype.imgCreate = function () {
   point.style.width = this.pointWidth + 'px'
   point.style.height = this.pointHeight + 'px'
 
-  // pic.appendChild(img)
+
   player.appendChild(pic)
   player.appendChild(point)
   playerList.appendChild(player)
 }
 
-// 改成 class 
-// class PlayerCircle {
-//   constructor(name, pointWidth, pointHeight, level = 'easy') {
-//     this.name = name
-//     this.pointWidth = pointWidth,
-//     this.pointHeight = pointHeight,
-//     this.level = level
-//   }
 
-//   imgCreate () {
-//     // 建立player節點
-//     const player = document.createElement('div')
-//     player.className = `player ${this.name}`
-//     player.dataset.player = this.name
+// =====================================
 
-//     const pic = document.createElement('div')
-//     if (this.level === 'hard') {
-//       pic.style = `
-//       background-image: url(images/childhood/${this.name}.png),linear-gradient(#fff, #fff);
-//       background-repeat: no-repeat;
-//       background-position: top center;
-//       background-size: cover;`
-//     } else {
-//       pic.style = `
-//               background-image: url(images/${this.name}.png),linear-gradient(#fff, #fff);
-//               background-repeat: no-repeat;
-//               background-position: top center;
-//               background-size: cover;`
-//     }
-
-//     pic.className = `pic ${this.name}`
-//     pic.dataset.player = this.name
-
-
-//     // 建立point
-//     const point = document.createElement('span')
-//     point.className = `point point_DIV ${this.name}`
-//     point.dataset.player = this.name
-//     point.style.width = this.pointWidth + 'px'
-//     point.style.height = this.pointHeight + 'px'
-
-//     // pic.appendChild(img)
-//     player.appendChild(pic)
-//     player.appendChild(point)
-//     playerList.appendChild(player)
-//   }
-// }
-
-
-// 建立隨機數
-// https://ithelp.ithome.com.tw/articles/10197904
-// Math.random() --- 隨機產生出0~1之間的小數
-// Math.floor() ---- 無條件捨去
 
 function getRandomInt (max) {
   return Math.floor(Math.random() * max);
@@ -173,26 +123,30 @@ function getPlayer (status = 'easy') {
 
 getPlayer()
 
+
 // =====================================
+
 
 let playerBtnTemp = []
 
 function btnRandom (playerTemp) {
 
   const arr = setInterval(() => {
-    // 當 playerBtnTemp == 8 代表已重新排列完
-    // 排列完就停止 clearInterval ， 並且開始製作BTN
+
     if (playerBtnTemp.length == 8) {
+
       clearInterval(arr)
+
       // 製作八位球星的BTN
       playerBtnTemp.forEach((item, index) => {
         const playerBtn = new PlayButton(item, pointWidth, pointHeight)
         playerBtn.btnCreate()
       })
-      return // console.log('playerBtnTemp', playerBtnTemp)
+      return
     }
 
     const num = getRandomInt(playerTemp.length)
+
     // 過濾重複的人
     if (playerBtnTemp.includes(playerTemp[num])) {
       return
@@ -237,6 +191,7 @@ PlayButton.prototype.btnCreate = function () {
   playerBtnList.appendChild(playerBtnDiv)
 }
 
+
 // =====================================
 
 
@@ -244,7 +199,6 @@ let arr = []
 let click = 0;
 
 document.addEventListener('click', e => {
-
 
   if (e.target.classList.contains('disabled')) {
 
@@ -261,13 +215,10 @@ document.addEventListener('click', e => {
 
   }
 
-
   click++
 
   // 點到A球員 >　抓取A球員Point的位置
   const playerPoint = document.querySelector(`.point.point_${e.target.nodeName}.${e.target.dataset.player}`)
-
-  // console.log(playerPoint)
 
   let obj = {
     cx: playerPoint.offsetLeft + pointWidth / 2,
@@ -334,11 +285,12 @@ document.addEventListener('click', e => {
     }
   }
 
-
 })
 
 
-// -----------------------------
+
+
+// =====================================
 
 const svgNs = 'http://www.w3.org/2000/svg';
 
@@ -383,6 +335,8 @@ Svg.prototype.createLine = function () {
 }
 
 
+
+
 // =====================================
 // 完成送出
 
@@ -409,6 +363,8 @@ btnFinish.addEventListener('click', e => {
   })
 
 }, false)
+
+
 
 
 // =====================================
@@ -440,6 +396,8 @@ btnBack.addEventListener('click', e => {
 }, false)
 
 
+
+
 // =====================================
 // 重新開始
 
@@ -462,8 +420,9 @@ btnRestart.addEventListener('click', e => {
     getPlayer('hard')
   }
 
-
 })
+
+
 
 
 // =====================================
@@ -491,6 +450,7 @@ btnHard.addEventListener('click', e => {
 
   level = 'hard'
 })
+
 
 // =====================================
 // 到簡單的關卡
@@ -521,6 +481,8 @@ btnEasy.addEventListener('click', e => {
   level = 'easy'
 
 })
+
+
 
 
 // =====================================
@@ -561,11 +523,6 @@ btnYes.addEventListener('click', e => {
   openText.classList.add('out')
   openBtnGroup.classList.add('out')
   match.classList.add('show')
-  // if (isMobileDevice()) {
-  //   circle.style.transform = 'scale(1.5)'
-  // }else{
-  //   circle.style.transform = 'scale(1)'
-  // }
 })
 
 
@@ -581,6 +538,8 @@ btnNo.addEventListener('click', e => {
     window.open("about:blank", "_self").close()
   }, 800)
 })
+
+
 
 
 // =====================================
